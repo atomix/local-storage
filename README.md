@@ -1,2 +1,2 @@
-# local-storage
-Local storage engine for Atomix Cloud
+# Shared Memory Storage
+Shared memory storage engine for Atomix Cloud
