@@ -18,6 +18,7 @@ import (
 	"github.com/atomix/runtime/sdk/pkg/network"
 	"github.com/atomix/runtime/sdk/pkg/protocol/node"
 	"github.com/atomix/runtime/sdk/pkg/protocol/statemachine"
+	"github.com/atomix/shared-memory-storage/node/pkg/sharedmemory"
 	"github.com/spf13/cobra"
 	"google.golang.org/grpc"
 	"gopkg.in/yaml.v3"
