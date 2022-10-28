@@ -272,7 +272,7 @@ func (r *SharedMemoryStoreReconciler) addDeployment(ctx context.Context, store *
 							Args: []string{
 								"--config",
 								filepath.Join(configPath, configFile),
-								"--api-port",
+								"--port",
 								fmt.Sprint(apiPort),
 							},
 							ReadinessProbe: &corev1.Probe{
