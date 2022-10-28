@@ -1,4 +1,4 @@
-module github.com/atomix/memory/driver
+module github.com/atomix/shared-memory-storage/driver
 
 go 1.19
 

@@ -11,7 +11,7 @@ import (
 )
 
 var driverID = runtime.DriverID{
-	Name:    "Memory",
+	Name:    "SharedMemory",
 	Version: "v1beta1",
 }
 

@@ -5,8 +5,8 @@
 package main
 
 import (
-	"github.com/atomix/memory/driver"
 	"github.com/atomix/runtime/sdk/pkg/network"
+	"github.com/atomix/shared-memory-storage/driver"
 )
 
 var Plugin = driver.New(network.NewNetwork())
