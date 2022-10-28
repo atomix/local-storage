@@ -23,7 +23,7 @@ import (
 )
 
 func NewProtocol() node.Protocol {
-	return &sharedMemoryProtocol{
+	return &memoryProtocol{
 		partitions: map[protocol.PartitionID]node.Partition{
 			1: node.NewPartition(1, newExecutor()),
 			2: node.NewPartition(2, newExecutor()),
@@ -32,11 +32,11 @@ func NewProtocol() node.Protocol {
 	}
 }
 
-type sharedMemoryProtocol struct {
+type memoryProtocol struct {
 	partitions map[protocol.PartitionID]node.Partition
 }
 
-func (p *sharedMemoryProtocol) Partitions() []node.Partition {
+func (p *memoryProtocol) Partitions() []node.Partition {
 	partitions := make([]node.Partition, 0, len(p.partitions))
 	for _, partition := range p.partitions {
 		partitions = append(partitions, partition)
@@ -44,7 +44,7 @@ func (p *sharedMemoryProtocol) Partitions() []node.Partition {
 	return partitions
 }
 
-func (p *sharedMemoryProtocol) Partition(partitionID protocol.PartitionID) (node.Partition, bool) {
+func (p *memoryProtocol) Partition(partitionID protocol.PartitionID) (node.Partition, bool) {
 	partition, ok := p.partitions[partitionID]
 	return partition, ok
 }
@@ -60,24 +60,24 @@ func newExecutor() node.Executor {
 	multimapv1.RegisterStateMachine(registry)
 	setv1.RegisterStateMachine(registry)
 	valuev1.RegisterStateMachine(registry)
-	return &sharedMemoryExecutor{
+	return &memoryExecutor{
 		sm: statemachine.NewStateMachine(registry),
 	}
 }
 
-type sharedMemoryExecutor struct {
+type memoryExecutor struct {
 	sm statemachine.StateMachine
 	mu sync.RWMutex
 }
 
-func (e *sharedMemoryExecutor) Propose(ctx context.Context, proposal *protocol.ProposalInput, stream streams.WriteStream[*protocol.ProposalOutput]) error {
+func (e *memoryExecutor) Propose(ctx context.Context, proposal *protocol.ProposalInput, stream streams.WriteStream[*protocol.ProposalOutput]) error {
 	e.mu.Lock()
 	defer e.mu.Unlock()
 	e.sm.Propose(proposal, stream)
 	return nil
 }
 
-func (e *sharedMemoryExecutor) Query(ctx context.Context, query *protocol.QueryInput, stream streams.WriteStream[*protocol.QueryOutput]) error {
+func (e *memoryExecutor) Query(ctx context.Context, query *protocol.QueryInput, stream streams.WriteStream[*protocol.QueryOutput]) error {
 	e.mu.RLock()
 	defer e.mu.RUnlock()
 	e.sm.Query(query, stream)

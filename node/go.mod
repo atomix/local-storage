@@ -1,4 +1,4 @@
-module github.com/atomix/shared-memory/node
+module github.com/atomix/memory/node
 
 go 1.19
 
