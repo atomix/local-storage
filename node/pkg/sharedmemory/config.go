@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-package memory
+package sharedmemory
 
 type Config struct {
 	Server ServerConfig `json:"server" yaml:"server"`

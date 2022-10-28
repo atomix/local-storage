@@ -18,7 +18,6 @@ import (
 	"github.com/atomix/runtime/sdk/pkg/network"
 	"github.com/atomix/runtime/sdk/pkg/protocol/node"
 	"github.com/atomix/runtime/sdk/pkg/protocol/statemachine"
-	"github.com/atomix/shared-memory-storage/node/pkg/memory"
 	"github.com/spf13/cobra"
 	"google.golang.org/grpc"
 	"gopkg.in/yaml.v3"
@@ -48,7 +47,7 @@ func main() {
 				os.Exit(1)
 			}
 
-			config := memory.Config{}
+			config := sharedmemory.Config{}
 			configBytes, err := ioutil.ReadFile(configPath)
 			if err != nil {
 				fmt.Println(err)
@@ -92,7 +91,7 @@ func main() {
 
 			node := node.NewNode(
 				network.NewNetwork(),
-				memory.NewProtocol(),
+				sharedmemory.NewProtocol(),
 				node.WithHost(host),
 				node.WithPort(port),
 				node.WithGRPCServerOptions(serverOptions...))
