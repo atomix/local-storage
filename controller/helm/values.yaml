@@ -4,18 +4,17 @@
 
 replicas: 1
 
-controller:
-  image:
-    registry: ""
-    repository: atomix/consensus-controller
-    tag: v0.6.0
-    pullPolicy: ""
-    pullSecrets: []
+image:
+  registry: ""
+  repository: atomix/shared-memory-controller
+  tag: v0.6.0
+  pullPolicy: ""
+  pullSecrets: []
 
 node:
   image:
     registry: ""
-    repository: atomix/consensus-node
+    repository: atomix/shared-memory-node
     tag: v0.12
     pullPolicy: ""
     pullSecrets: []

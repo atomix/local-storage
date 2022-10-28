@@ -1,9 +1,8 @@
-module github.com/atomix/consensus/controller
+module github.com/atomix/shared-memory-storage/controller
 
 go 1.19
 
 require (
-	github.com/atomix/consensus/node v0.12.0
 	github.com/atomix/runtime/controller v0.6.0
 	github.com/atomix/runtime/sdk v0.7.2
 	github.com/cenkalti/backoff v2.2.1+incompatible
@@ -24,6 +23,7 @@ require (
 	github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578 // indirect
 	github.com/VictoriaMetrics/metrics v1.6.2 // indirect
 	github.com/armon/go-metrics v0.3.10 // indirect
+	github.com/atomix/shared-memory-storage/node v0.0.0-20221028090053-958dc090b135 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/bits-and-blooms/bitset v1.2.0 // indirect
 	github.com/bits-and-blooms/bloom/v3 v3.2.0 // indirect

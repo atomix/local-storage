@@ -11,15 +11,9 @@ import (
 
 var log = logging.GetLogger()
 
-// AddControllers adds consensus controllers to the manager
+// AddControllers adds memory controllers to the manager
 func AddControllers(mgr manager.Manager) error {
-	if err := addConsensusStoreController(mgr); err != nil {
-		return err
-	}
-	if err := addMultiRaftClusterController(mgr); err != nil {
-		return err
-	}
-	if err := addPodController(mgr); err != nil {
+	if err := addSharedMemoryStoreController(mgr); err != nil {
 		return err
 	}
 	return nil

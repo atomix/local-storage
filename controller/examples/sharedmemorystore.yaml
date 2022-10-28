@@ -1,4 +1,4 @@
-apiVersion: memory.atomix.io/v1beta1
+apiVersion: sharedmemory.atomix.io/v1beta1
 kind: SharedMemoryStore
 metadata:
-  name: example-memory-store
+  name: example-shared-memory-store

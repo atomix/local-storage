@@ -6,7 +6,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   creationTimestamp: null
-  name: {{ template "atomix-consensus-controller.fullname" . }}
+  name: {{ template "atomix-memory-controller.fullname" . }}
 rules:
   - apiGroups:
       - ""
@@ -44,7 +44,7 @@ rules:
       - '*'
   - apiGroups:
       - atomix.io
-      - consensus.atomix.io
+      - sharedmemory.atomix.io
     resources:
       - '*'
     verbs:

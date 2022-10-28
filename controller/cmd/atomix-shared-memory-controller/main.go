@@ -7,11 +7,11 @@ package main
 import (
 	"context"
 	"fmt"
-	memoryapis "github.com/atomix/memory/controller/pkg/apis"
-	memoryv1beta1 "github.com/atomix/memory/controller/pkg/controller/memory/v1beta1"
 	runtimeapis "github.com/atomix/runtime/controller/pkg/apis"
 	"github.com/atomix/runtime/controller/pkg/controller/util/k8s"
 	"github.com/atomix/runtime/sdk/pkg/logging"
+	memoryapis "github.com/atomix/shared-memory-storage/controller/pkg/apis"
+	memoryv1beta1 "github.com/atomix/shared-memory-storage/controller/pkg/controller/memory/v1beta1"
 	"github.com/go-logr/logr"
 	"github.com/spf13/cobra"
 	"os"
@@ -42,7 +42,7 @@ func main() {
 
 func getCommand() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:  "atomix-memory-controller",
+		Use:  "atomix-shared-memory-controller",
 		Args: cobra.NoArgs,
 		Run: func(cmd *cobra.Command, args []string) {
 			namespace, _ := cmd.Flags().GetString("namespace")

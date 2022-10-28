@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-// Package v1beta1 contains API Schema definitions for the consensus v1beta1 API group
+// Package v1beta1 contains API Schema definitions for the sharedmemory v1beta1 API group
 // +k8s:deepcopy-gen=package,register
-// +groupName=consensus.atomix.io
+// +groupName=sharedmemory.atomix.io
 package v1beta1

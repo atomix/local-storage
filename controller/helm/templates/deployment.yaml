@@ -5,25 +5,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ template "atomix-consensus-controller.fullname" . }}
+  name: {{ template "atomix-memory-controller.fullname" . }}
 spec:
   replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
-      name: {{ template "atomix-consensus-controller.fullname" . }}
+      name: {{ template "atomix-memory-controller.fullname" . }}
   template:
     metadata:
       labels:
-        name: {{ template "atomix-consensus-controller.fullname" . }}
+        name: {{ template "atomix-memory-controller.fullname" . }}
     spec:
-      serviceAccountName: {{ template "atomix-consensus-controller.fullname" . }}
+      serviceAccountName: {{ template "atomix-memory-controller.fullname" . }}
       containers:
-        - name: atomix-consensus-controller
-          image: {{ include "atomix-consensus-controller.imagename" .Values.controller.image | quote }}
+        - name: atomix-memory-controller
+          image: {{ include "atomix-memory-controller.imagename" .Values.image | quote }}
           securityContext:
             allowPrivilegeEscalation: false
             runAsUser: 0
-          imagePullPolicy: {{ .Values.controller.image.pullPolicy }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           readinessProbe:
             exec:
               command:
@@ -34,7 +34,7 @@ spec:
             failureThreshold: 1
           env:
             - name: CONTROLLER_NAME
-              value: {{ template "atomix-consensus-controller.fullname" . }}
+              value: {{ template "atomix-memory-controller.fullname" . }}
             - name: CONTROLLER_NAMESPACE
               valueFrom:
                 fieldRef:
@@ -48,7 +48,7 @@ spec:
                 fieldRef:
                   fieldPath: metadata.namespace
             - name: DEFAULT_NODE_IMAGE
-              value: {{ include "atomix-consensus-controller.imagename" .Values.node.image | quote }}
+              value: {{ include "atomix-memory-controller.imagename" .Values.node.image | quote }}
           volumeMounts:
             - name: config
               mountPath: /etc/atomix/config
@@ -56,4 +56,4 @@ spec:
       volumes:
         - name: config
           configMap:
-            name: {{ template "atomix-consensus-controller.fullname" . }}-config
+            name: {{ template "atomix-memory-controller.fullname" . }}-config

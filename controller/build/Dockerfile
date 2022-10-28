@@ -15,7 +15,7 @@ RUN go mod download -x
 COPY ./cmd /build/cmd
 COPY ./pkg /build/pkg
 
-RUN go build -mod=readonly -trimpath -o /build/dist/bin/atomix-consensus-controller ./cmd/atomix-consensus-controller
+RUN go build -mod=readonly -trimpath -o /build/dist/bin/atomix-shared-memory-controller ./cmd/atomix-shared-memory-controller
 
 FROM alpine:3.15
 
@@ -25,6 +25,6 @@ RUN addgroup -S atomix && adduser -S -G atomix atomix
 
 USER atomix
 
-COPY --from=build /build/dist/bin/atomix-consensus-controller /usr/local/bin/atomix-consensus-controller
+COPY --from=build /build/dist/bin/atomix-shared-memory-controller /usr/local/bin/atomix-shared-memory-controller
 
-ENTRYPOINT ["atomix-consensus-controller"]
+ENTRYPOINT ["atomix-shared-memory-controller"]

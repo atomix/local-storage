@@ -5,10 +5,10 @@
 package apis
 
 import (
-	consensusv1beta1 "github.com/atomix/consensus/controller/pkg/apis/consensus/v1beta1"
+	sharedmemoryv1beta1 "github.com/atomix/shared-memory-storage/controller/pkg/apis/sharedmemory/v1beta1"
 )
 
 func init() {
 	// register the types with the Scheme so the components can map objects to GroupVersionKinds and back
-	AddToSchemes = append(AddToSchemes, consensusv1beta1.SchemeBuilder.AddToScheme)
+	AddToSchemes = append(AddToSchemes, sharedmemoryv1beta1.SchemeBuilder.AddToScheme)
 }

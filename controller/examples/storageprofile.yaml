@@ -5,7 +5,7 @@ metadata:
 spec:
   bindings:
     - store:
-        name: example-consensus-store
+        name: example-memory-store
       tags:
         - foo
         - bar
