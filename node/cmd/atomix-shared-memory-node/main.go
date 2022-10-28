@@ -6,7 +6,6 @@ package main
 
 import (
 	"fmt"
-	"github.com/atomix/memory/node/pkg/memory"
 	counterv1 "github.com/atomix/runtime/primitives/pkg/counter/v1"
 	countermapv1 "github.com/atomix/runtime/primitives/pkg/countermap/v1"
 	electionv1 "github.com/atomix/runtime/primitives/pkg/election/v1"
@@ -19,6 +18,7 @@ import (
 	"github.com/atomix/runtime/sdk/pkg/network"
 	"github.com/atomix/runtime/sdk/pkg/protocol/node"
 	"github.com/atomix/runtime/sdk/pkg/protocol/statemachine"
+	"github.com/atomix/shared-memory-storage/node/pkg/memory"
 	"github.com/spf13/cobra"
 	"google.golang.org/grpc"
 	"gopkg.in/yaml.v3"
