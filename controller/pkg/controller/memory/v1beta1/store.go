@@ -47,6 +47,7 @@ const (
 	apiPort                     = 5678
 	probePort                   = 5678
 	defaultImageEnv             = "DEFAULT_NODE_IMAGE"
+	defaultImagePullPolicyEnv   = "DEFAULT_NODE_IMAGE_PULL_POLICY"
 	defaultImage                = "atomix/shared-memory-node:latest"
 	appLabel                    = "app"
 	storeLabel                  = "store"
@@ -239,21 +240,6 @@ func (r *SharedMemoryStoreReconciler) reconcileDeployment(ctx context.Context, s
 
 func (r *SharedMemoryStoreReconciler) addDeployment(ctx context.Context, store *sharedmemoryv1beta1.SharedMemoryStore) error {
 	log.Info("Creating Deployment", "Name", store.Name, "Namespace", store.Namespace)
-
-	image := getImage(store)
-	volumes := []corev1.Volume{
-		{
-			Name: configVolume,
-			VolumeSource: corev1.VolumeSource{
-				ConfigMap: &corev1.ConfigMapVolumeSource{
-					LocalObjectReference: corev1.LocalObjectReference{
-						Name: store.Name,
-					},
-				},
-			},
-		},
-	}
-
 	deployment := &appsv1.Deployment{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:        store.Name,
@@ -275,8 +261,8 @@ func (r *SharedMemoryStoreReconciler) addDeployment(ctx context.Context, store *
 					Containers: []corev1.Container{
 						{
 							Name:            nodeContainerName,
-							Image:           image,
-							ImagePullPolicy: store.Spec.ImagePullPolicy,
+							Image:           getImage(store),
+							ImagePullPolicy: getPullPolicy(store),
 							Ports: []corev1.ContainerPort{
 								{
 									Name:          "api",
@@ -318,7 +304,18 @@ func (r *SharedMemoryStoreReconciler) addDeployment(ctx context.Context, store *
 						},
 					},
 					ImagePullSecrets: store.Spec.ImagePullSecrets,
-					Volumes:          volumes,
+					Volumes: []corev1.Volume{
+						{
+							Name: configVolume,
+							VolumeSource: corev1.VolumeSource{
+								ConfigMap: &corev1.ConfigMapVolumeSource{
+									LocalObjectReference: corev1.LocalObjectReference{
+										Name: store.Name,
+									},
+								},
+							},
+						},
+					},
 				},
 			},
 		},
@@ -509,4 +506,11 @@ func getDefaultImage() string {
 		image = defaultImage
 	}
 	return image
+}
+
+func getPullPolicy(store *sharedmemoryv1beta1.SharedMemoryStore) corev1.PullPolicy {
+	if store.Spec.ImagePullPolicy != "" {
+		return store.Spec.ImagePullPolicy
+	}
+	return corev1.PullPolicy(os.Getenv(defaultImagePullPolicyEnv))
 }

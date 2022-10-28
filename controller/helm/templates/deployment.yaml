@@ -49,6 +49,8 @@ spec:
                   fieldPath: metadata.namespace
             - name: DEFAULT_NODE_IMAGE
               value: {{ include "atomix-shared-memory-controller.imagename" .Values.node.image | quote }}
+            - name: DEFAULT_NODE_IMAGE_PULL_POLICY
+              value: {{ .Values.node.image.pullPolicy | quote }}
           volumeMounts:
             - name: config
               mountPath: /etc/atomix/config
