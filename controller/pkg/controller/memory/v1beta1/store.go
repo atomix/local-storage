@@ -386,7 +386,7 @@ func (r *SharedMemoryStoreReconciler) addDataStore(ctx context.Context, store *s
 		Partitions: []protocol.PartitionConfig{
 			{
 				PartitionID: 1,
-				Leader:      fmt.Sprintf("%s.%s.svc.%s", store.Name, store.Namespace, getClusterDomain()),
+				Leader:      fmt.Sprintf("%s.%s.svc.%s:%d", store.Name, store.Namespace, getClusterDomain(), apiPort),
 			},
 		},
 	}
