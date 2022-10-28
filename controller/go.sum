@@ -68,8 +68,8 @@ github.com/atomix/runtime/primitives v0.7.1 h1:/7ADOy3Szg8KORXnWqfc+NtKskpVws70A
 github.com/atomix/runtime/primitives v0.7.1/go.mod h1:h8v83uoIemYNTF6wvupRxrwFPGFCl1VvK2E2s8N2tok=
 github.com/atomix/runtime/sdk v0.7.2 h1:P4DNrnlwGYrF4jC892ugL1Cn5TGTlQoPhF05lhIEjXs=
 github.com/atomix/runtime/sdk v0.7.2/go.mod h1:CIxhWG1UkcWL82+XJ1wwynz1T5k4nYTZdwNlWp8IMd8=
-github.com/atomix/shared-memory-storage/node v0.0.0-20221028090053-958dc090b135 h1:8T9wmBbTQ1AkJ2wlL6NMWKS9DVA1AVKcu32H28V4vU4=
-github.com/atomix/shared-memory-storage/node v0.0.0-20221028090053-958dc090b135/go.mod h1:/YHjIBEUVktz0P1tewJM7ggo3Ns1Z11uugl7nyyWvoY=
+github.com/atomix/shared-memory-storage/node v0.1.0 h1:WzWXSNNiTqTYdYUSMLHqtAwGcRYt3wp9vcJDvdv6ak0=
+github.com/atomix/shared-memory-storage/node v0.1.0/go.mod h1:/YHjIBEUVktz0P1tewJM7ggo3Ns1Z11uugl7nyyWvoY=
 github.com/benbjohnson/clock v1.0.3/go.mod h1:bGMdMPoPVvcYyt1gHDf4J2KE153Yf9BuiUKYMaxlTDM=
 github.com/benbjohnson/clock v1.1.0 h1:Q92kusRqC1XV2MjkWETPvjJVqKetz1OzxZB7mHJLju8=
 github.com/benbjohnson/clock v1.1.0/go.mod h1:J11/hYXuz8f4ySSvYwY0FKfm+ezbsZBKZxNJlLklBHA=

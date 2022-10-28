@@ -5,7 +5,7 @@ go 1.19
 require (
 	github.com/atomix/runtime/controller v0.6.0
 	github.com/atomix/runtime/sdk v0.7.2
-	github.com/atomix/shared-memory-storage/node v0.0.0-20221028090053-958dc090b135
+	github.com/atomix/shared-memory-storage/node v0.1.0
 	github.com/go-logr/logr v1.2.0
 	github.com/gogo/protobuf v1.3.2
 	github.com/spf13/cobra v1.4.0
