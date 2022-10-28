@@ -10,7 +10,7 @@ Provides a [Helm] chart for deploying [Atomix] on [Kubernetes].
 To install the chart, run `helm install` from the root:
 
 ```bash
-helm install atomix-memory-controller .
+helm install atomix-shared-memory-controller .
 ```
 
 [Helm]: https://helm.sh/

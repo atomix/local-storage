@@ -29,7 +29,7 @@ import (
 
 func main() {
 	cmd := &cobra.Command{
-		Use: "atomix-memory-node",
+		Use: "atomix-shared-memory-node",
 		Run: func(cmd *cobra.Command, args []string) {
 			configPath, err := cmd.Flags().GetString("config")
 			if err != nil {

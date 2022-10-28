@@ -5,21 +5,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ template "atomix-memory-controller.fullname" . }}
+  name: {{ template "atomix-shared-memory-controller.fullname" . }}
 spec:
   replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
-      name: {{ template "atomix-memory-controller.fullname" . }}
+      name: {{ template "atomix-shared-memory-controller.fullname" . }}
   template:
     metadata:
       labels:
-        name: {{ template "atomix-memory-controller.fullname" . }}
+        name: {{ template "atomix-shared-memory-controller.fullname" . }}
     spec:
-      serviceAccountName: {{ template "atomix-memory-controller.fullname" . }}
+      serviceAccountName: {{ template "atomix-shared-memory-controller.fullname" . }}
       containers:
-        - name: atomix-memory-controller
-          image: {{ include "atomix-memory-controller.imagename" .Values.image | quote }}
+        - name: atomix-shared-memory-controller
+          image: {{ include "atomix-shared-memory-controller.imagename" .Values.image | quote }}
           securityContext:
             allowPrivilegeEscalation: false
             runAsUser: 0
@@ -34,7 +34,7 @@ spec:
             failureThreshold: 1
           env:
             - name: CONTROLLER_NAME
-              value: {{ template "atomix-memory-controller.fullname" . }}
+              value: {{ template "atomix-shared-memory-controller.fullname" . }}
             - name: CONTROLLER_NAMESPACE
               valueFrom:
                 fieldRef:
@@ -48,7 +48,7 @@ spec:
                 fieldRef:
                   fieldPath: metadata.namespace
             - name: DEFAULT_NODE_IMAGE
-              value: {{ include "atomix-memory-controller.imagename" .Values.node.image | quote }}
+              value: {{ include "atomix-shared-memory-controller.imagename" .Values.node.image | quote }}
           volumeMounts:
             - name: config
               mountPath: /etc/atomix/config
@@ -56,4 +56,4 @@ spec:
       volumes:
         - name: config
           configMap:
-            name: {{ template "atomix-memory-controller.fullname" . }}-config
+            name: {{ template "atomix-shared-memory-controller.fullname" . }}-config
