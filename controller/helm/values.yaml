@@ -1,0 +1,21 @@
+# SPDX-FileCopyrightText: 2022-present Intel Corporation
+#
+# SPDX-License-Identifier: Apache-2.0
+
+replicas: 1
+
+controller:
+  image:
+    registry: ""
+    repository: atomix/consensus-controller
+    tag: v0.6.0
+    pullPolicy: ""
+    pullSecrets: []
+
+node:
+  image:
+    registry: ""
+    repository: atomix/consensus-node
+    tag: v0.12
+    pullPolicy: ""
+    pullSecrets: []

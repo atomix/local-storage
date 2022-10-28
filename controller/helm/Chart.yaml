@@ -1,0 +1,19 @@
+# SPDX-FileCopyrightText: 2022-present Intel Corporation
+#
+# SPDX-License-Identifier: Apache-2.0
+
+apiVersion: v2
+name: atomix-consensus-controller
+description: The consensus controller extends the Kubernetes API with custom resources for consensus stores.
+kubeVersion: ">=1.17.0"
+type: application
+version: 1.4.0
+appVersion: v0.6.0
+keywords:
+- atomix
+- consensus
+- raft
+home: https://atomix.io
+maintainers:
+- name: Jordan Halterman
+  email: jordan.halterman@intel.com
