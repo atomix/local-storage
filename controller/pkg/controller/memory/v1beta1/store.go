@@ -53,7 +53,7 @@ const (
 	storeLabel                  = "store"
 	appAtomix                   = "atomix"
 	nodeContainerName           = "atomix-shared-memory-node"
-	sharedMemoryStoreAnnotation = "multiraft.atomix.io/store"
+	sharedMemoryStoreAnnotation = "sharedmemory.atomix.io/store"
 )
 
 const (
