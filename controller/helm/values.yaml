@@ -7,7 +7,7 @@ replicas: 1
 image:
   registry: ""
   repository: atomix/shared-memory-controller
-  tag: v0.6.0
+  tag: v0.1.0
   pullPolicy: ""
   pullSecrets: []
 
@@ -15,6 +15,6 @@ node:
   image:
     registry: ""
     repository: atomix/shared-memory-node
-    tag: v0.12
+    tag: v0.1
     pullPolicy: ""
     pullSecrets: []
