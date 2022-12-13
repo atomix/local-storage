@@ -18,7 +18,7 @@ require (
 
 require (
 	github.com/atomix/runtime/primitives v0.7.7
-	github.com/atomix/runtime/sdk v0.7.5
+	github.com/atomix/runtime/sdk v0.7.6
 	github.com/spf13/cobra v1.4.0
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b
 )
